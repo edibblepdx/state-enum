@@ -1,43 +1,4 @@
-//! # state-enum
-//!
-//! Simple state enum.
-//!
-//! ## Example
-//!
-//! ```
-//! use state_enum::state_enum;
-//!
-//! #[state_enum]
-//! enum State {
-//!     Cats,
-//!     Dogs,
-//!     Fish,
-//! }
-//! ```
-//!
-//! ## Expands to
-//!
-//! ```
-//! #[derive(Copy, Clone, Default, PartialEq)]
-//! enum State {
-//!     #[default]
-//!     Cats,
-//!     Dogs,
-//!     Fish,
-//! }
-//!
-//! impl State {
-//!     const ALL: [Self; 3] = [Self::Cats, Self::Dogs, Self::Fish];
-//!
-//!     pub fn next(self) -> Self {
-//!         Self::ALL[(self as usize + 1) % 3]
-//!     }
-//!
-//!     pub fn prev(self) -> Self {
-//!         Self::ALL[(self as usize + 2) % 3]
-//!     }
-//! }
-//! ```
+#![doc = include_str!("../README.md")]
 
 use proc_macro::TokenStream;
 use quote::quote;
@@ -59,6 +20,7 @@ use syn::{Error, Fields, ItemEnum, parse_macro_input, parse_quote};
 /// - [`Default`]
 /// - [`PartialEq`]
 ///
+#[doc = include_str!("../README.md")]
 #[proc_macro_attribute]
 pub fn state_enum(_args: TokenStream, input: TokenStream) -> TokenStream {
     let mut input = parse_macro_input!(input as ItemEnum);
