@@ -63,6 +63,14 @@ pub fn state_enum(_args: TokenStream, input: TokenStream) -> TokenStream {
             pub fn prev(self) -> Self {
                 Self::ALL[(self as usize + #len - 1) % #len]
             }
+
+            pub fn succ(self) -> Self {
+                self.next()
+            }
+
+            pub fn pred(self) -> Self {
+                self.next()
+            }
         }
     })
 }
