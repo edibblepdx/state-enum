@@ -69,7 +69,7 @@ pub fn state_enum(_args: TokenStream, input: TokenStream) -> TokenStream {
             }
 
             pub fn pred(self) -> Self {
-                self.next()
+                self.prev()
             }
         }
     })
